@@ -20,29 +20,33 @@ export default function Navbar() {
           <div className="hidden md:flex space-x-6">
             <Link
               href="/"
-              className={`${
-                pathname === "/" ? "text-blue-600 font-semibold" : "text-gray-700"
-              } hover:text-blue-600`}
+              className={`${pathname === "/" ? "text-blue-600 font-semibold" : "text-gray-700"
+                } hover:text-blue-600`}
             >
               Home
             </Link>
             <Link
               href="/products"
-              className={`${
-                pathname === "/products"
+              className={`${pathname === "/products"
                   ? "text-blue-600 font-semibold"
                   : "text-gray-700"
-              } hover:text-blue-600`}
+                } hover:text-blue-600`}
             >
               Products
             </Link>
             <Link
+              href="/dashboard/add-product"
+              className="block px-4  text-gray-700 hover:bg-blue-50"
+              onClick={() => setIsOpen(false)}
+            >
+              Add Products
+            </Link>
+            <Link
               href="/login"
-              className={`${
-                pathname === "/login"
+              className={`${pathname === "/login"
                   ? "text-blue-600 font-semibold"
                   : "text-gray-700"
-              } hover:text-blue-600`}
+                } hover:text-blue-600`}
             >
               Login
             </Link>
@@ -75,6 +79,16 @@ export default function Navbar() {
           >
             Products
           </Link>
+
+          <Link
+            href="/dashboard/add-product"
+            className="block px-4 py-2 text-gray-700 hover:bg-blue-50"
+            onClick={() => setIsOpen(false)}
+          >
+            Add Products
+          </Link>
+
+
           <Link
             href="/login"
             className="block px-4 py-2 text-gray-700 hover:bg-blue-50"

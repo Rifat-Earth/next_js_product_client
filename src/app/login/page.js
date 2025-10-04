@@ -2,6 +2,7 @@
 import { signIn } from "next-auth/react";
 
 export default function LoginPage() {
+  
   return (
     <div className="min-h-screen flex items-center justify-center bg-blue-100">
       <div className="bg-white p-8 rounded-lg shadow-md w-80 text-center">
