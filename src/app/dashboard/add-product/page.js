@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useSession, signIn } from "next-auth/react";
+import { toast } from "react-toastify";
 
 export default function AddProductPage() {
   const { data: session, status } = useSession();
@@ -15,12 +16,12 @@ export default function AddProductPage() {
   // Redirect unauthenticated users
   useEffect(() => {
     if (status === "unauthenticated") {
-      signIn(); // redirect to login
+      signIn("");
     }
   }, [status]);
 
   if (status === "loading") return <p>Loading session...</p>;
-  if (!session) return null; // wait for redirect
+  if (!session) return null;
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -32,7 +33,7 @@ export default function AddProductPage() {
     setMessage("");
 
     try {
-      const res = await fetch("http://localhost:5000/products", {
+      const res = await fetch("https://basic-nextjs-server.vercel.app/products", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -42,7 +43,11 @@ export default function AddProductPage() {
         }),
       });
 
-      if (!res.ok) throw new Error("Failed to add product");
+      if (res.ok) {
+        toast.success("Product added successfully!");
+      } else {
+        toast.error("Failed to add product.");
+      }
 
       setForm({ name: "", description: "", price: "" });
       setMessage("✅ Product added successfully!");

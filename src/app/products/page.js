@@ -5,7 +5,7 @@ export default function ProductsPage() {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/products")
+        fetch("https://basic-nextjs-server.vercel.app/products")
             .then((res) => res.json())
             .then((data) => setProducts(data))
             .catch((err) => console.error(err));

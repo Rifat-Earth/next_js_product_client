@@ -8,7 +8,7 @@ export default function ProductDetailsPage() {
 
   useEffect(() => {
     if (!id) return;
-    fetch(`http://localhost:5000/products/${id}`)
+    fetch(`https://basic-nextjs-server.vercel.app/products/${id}`)
       .then((res) => res.json())
       .then((data) => setProduct(data))
       .catch((err) => console.error(err));
